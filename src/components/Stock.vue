@@ -28,8 +28,10 @@ export default {
   methods: {
     submitBought(e,elem) {
       // receive the input quantity from StockBlock, and combine with the stock properties rendered here
-      elem.quantity = e;
-      this.$store.commit("updatePortfolio",elem);
+      var payLoad = {brand: elem.brand,quantity: e,price: elem.price};
+      // need to construct a 'simple' object as payLoad, cannot pass in elem
+      this.$store.commit("addToPortfolio",payLoad);
+      this.$store.commit("buyStock",payLoad);
     }
   }
 }

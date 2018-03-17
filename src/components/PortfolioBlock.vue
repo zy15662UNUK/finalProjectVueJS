@@ -5,16 +5,30 @@
     </div>
     <form class="form-inline">
       <div class="form-group mx-sm-3 mb-2 mr-auto">
-        <label for="inputPassword2" class="sr-only">Quantity</label>
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Quantity">
+        <label class="sr-only">Quantity</label>
+        <input v-model="sellQuantity" type="text" class="form-control" placeholder="Quantity">
       </div>
-      <button type="submit" class="btn btn-primary mb-2 ml-auto mr-1">Sell</button>
+      <button @click="sellAStock" type="submit" class="btn btn-primary mb-2 ml-auto mr-1">Sell</button>
     </form>
   </div>
 </template>
 <script>
 export default {
-
+  data: function(){
+    return {
+      sellQuantity: ""
+    };
+  },
+  methods: {
+    sellAStock() {
+      var quantity = parseInt(this.sellQuantity);
+      if(quantity > 0){
+        this.$emit("soldAStock",quantity);
+      }else{
+        alert("The quantity input must be greater than 0!!");
+      }
+    }
+  }
 }
 </script>
 <style scoped>

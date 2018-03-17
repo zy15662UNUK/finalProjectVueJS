@@ -5,7 +5,7 @@
     </div>
     <form class="form-inline">
       <div class="form-group mx-sm-3 mb-2 mr-auto">
-        <label for="inputPassword2" class="sr-only">Quantity</label>
+        <label class="sr-only">Quantity</label>
         <input type="text" class="form-control" id="inputPassword2" v-model="buyQuantity" placeholder="Quantity">
       </div>
       <button type="submit" class="btn btn-primary mb-2 ml-auto mr-1" @click="buyStock">Buy</button>
@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     buyStock() {
+      console.log("this.buyQuantity: "+this.buyQuantity);
       var quantity = parseInt(this.buyQuantity);
       if(quantity > 0){
         this.$emit("boughtAStock",quantity);

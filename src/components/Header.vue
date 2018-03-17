@@ -31,7 +31,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><b>Funds: $8.150</b></a>
+            <a class="nav-link" href="#"><b>Funds: ${{funds}}</b></a>
           </li>
         </ul>
       </div>
@@ -39,8 +39,13 @@
   </div>
 </template>
 <script>
+import {mapGetters} from "vuex";
 export default {
-
+  computed: {
+    ...mapGetters([
+          "funds",
+        ]),
+  }
 }
 </script>
 <style scoped>
