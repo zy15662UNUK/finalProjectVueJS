@@ -6,15 +6,29 @@
     <form class="form-inline">
       <div class="form-group mx-sm-3 mb-2 mr-auto">
         <label for="inputPassword2" class="sr-only">Quantity</label>
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Quantity">
+        <input type="text" class="form-control" id="inputPassword2" v-model="buyQuantity" placeholder="Quantity">
       </div>
-      <button type="submit" class="btn btn-primary mb-2 ml-auto mr-1">Buy</button>
+      <button type="submit" class="btn btn-primary mb-2 ml-auto mr-1" @click="buyStock">Buy</button>
     </form>
   </div>
 </template>
 <script>
 export default {
-
+  data: function(){
+    return {
+      buyQuantity: "",
+    };
+  },
+  methods: {
+    buyStock() {
+      var quantity = parseInt(this.buyQuantity);
+      if(quantity > 0){
+        this.$emit("boughtAStock",quantity);
+      }else{
+        alert("The quantity input must be greater than 0!!");
+      }
+    }
+  }
 }
 </script>
 <style scoped>

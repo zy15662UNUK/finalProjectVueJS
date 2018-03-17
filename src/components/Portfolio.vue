@@ -3,7 +3,7 @@
     <div class="col-6" v-for="elem in portfolio">
       <PortfolioBlock>
         <span><b>{{elem.brand}}</b></span>
-        <span>(Price: {{elem.price}})</span>
+        <span>(Price: {{elem.price}} | Quantity: {{elem.quantity}})</span>
       </PortfolioBlock>
     </div>
   </div>

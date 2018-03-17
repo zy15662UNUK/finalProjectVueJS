@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
       {brand: "Twitter",price: 9},
     ],
     portfolio: [
-      {brand: "BMW",price: 75}
+
     ]
   },
   getters: {
@@ -20,6 +20,17 @@ export const store = new Vuex.Store({
     },
     portfolio: function(state){
       return state.portfolio;
+    }
+  },
+  mutations: {
+    updatePortfolio: function(state,boughtAStock){
+      for(var i=0;i<state.portfolio.length;i++){
+        if(state.portfolio[i].brand === boughtAStock.brand){
+          state.portfolio[i].quantity = boughtAStock.quantity;
+          return;
+        }
+      }
+      state.portfolio.push(boughtAStock);
     }
   }
 });
