@@ -23,16 +23,16 @@ export default {
   padding: 0;
   font-size: 16px;
   border-radius: 10px;
-  max-width: 360px;
+  max-width: 500px;
 }
 .top{
-  background-color: #fc74bc;
+  background-color: lightgreen;
   padding-top: auto;
   height: 30px;
   margin-bottom: 10px;
 }
 button{
-  background-color: #fc74bc;
-  border-color: #fc74bc;
+  background-color: lightgreen;
+  border-color: lightgreen;
 }
 </style>

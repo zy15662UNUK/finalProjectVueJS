@@ -7,18 +7,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Stocks</a>
-          </li>
+          <router-link tag="li" to="/" exact active-class="active">
+            <a class="nav-link">Home</a>
+          </router-link>
+          <router-link tag="li" to="/Portfolio" active-class="active">
+            <a class="nav-link">Portfolio</a>
+          </router-link>
+          <router-link tag="li" to="/Stock" active-class="active">
+            <a class="nav-link">Stocks</a>
+          </router-link>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">End Day <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">

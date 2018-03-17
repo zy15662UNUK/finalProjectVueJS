@@ -8,7 +8,7 @@
         <label for="inputPassword2" class="sr-only">Quantity</label>
         <input type="password" class="form-control" id="inputPassword2" placeholder="Quantity">
       </div>
-      <button type="submit" class="btn btn-primary mb-2 ml-auto mr-1">Buy</button>
+      <button type="submit" class="btn btn-primary mb-2 ml-auto mr-1">Sell</button>
     </form>
   </div>
 </template>
@@ -23,16 +23,16 @@ export default {
   padding: 0;
   font-size: 16px;
   border-radius: 10px;
-  max-width: 360px;
+  max-width: 500px;
 }
 .top{
-  background-color: lightgreen;
+  background-color: #fc74bc;
   padding-top: auto;
   height: 30px;
   margin-bottom: 10px;
 }
 button{
-  background-color: lightgreen;
-  border-color: lightgreen;
+  background-color: #fc74bc;
+  border-color: #fc74bc;
 }
 </style>
