@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
       {brand: "BMW",price: 75},
       {brand: "Google",price: 114},
       {brand: "Apple",price: 312},
-      {brand: "Twitter",price: 9},
+      {brand: "Twitter",price: 20},
     ],
     portfolio: [
     ],
@@ -26,13 +26,28 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    dayEnd: function(state){
+      // change price for each stock
+      var change;
+      for(var i=0;i<state.stock.length;i++){
+        change=Math.floor(Math.random()*20-10);
+        if((state.stock[i].price +change)<0){
+          state.stock[i].price=0;
+        }else{
+          state.stock[i].price +=change;
+        }
+        for(var j=0;j<state.portfolio.length;j++){
+          if(state.stock[i].brand===state.portfolio[j].brand){
+            state.portfolio[j].price = state.stock[i].price;
+          }
+        }
+      }
+    },
     addToPortfolio: function(state,stock){
       // update portfolio after buy a stock
       for(var i=0;i<state.portfolio.length;i++){
         if(state.portfolio[i].brand == stock.brand){
           state.portfolio[i].quantity = state.portfolio[i].quantity+stock.quantity;
-          console.log("stock");
-          console.log(stock);
           return;
         }
       }
@@ -53,7 +68,6 @@ export const store = new Vuex.Store({
         if(state.portfolio[i].brand === stock.brand){
           if(state.portfolio[i].quantity>stock.quantity){
             state.portfolio[i].quantity-=stock.quantity;
-            console.log(state.portfolio[i]);
           }else{
             state.portfolio.splice(i,1);
           }
@@ -65,10 +79,14 @@ export const store = new Vuex.Store({
       var price;
       for(var i=0;i<state.portfolio.length;i++){
         if(state.portfolio[i].brand === stock.brand){
-          if(state.portfolio[i].quantity>stock.quantity){
-            price=stock.quantity*stock.price;
-          }else{
-            price=state.portfolio[i].quantity*state.portfolio[i].price;
+          for(var j=0;j<state.stock.length;j++){
+            if(state.stock[j].brand === stock.brand){
+              if(state.portfolio[i].quantity>stock.quantity){
+                price=stock.quantity*state.stock[j].price;
+              }else{
+                price=state.portfolio[i].quantity*state.stock[j].price;
+              }
+            }
           }
           state.funds+=price;
         }

@@ -18,7 +18,7 @@
           </router-link>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item" @click="endDay">
             <a class="nav-link" href="#">End Day <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
@@ -45,6 +45,11 @@ export default {
     ...mapGetters([
           "funds",
         ]),
+  },
+  methods: {
+    endDay() {
+      this.$store.commit("dayEnd");
+    }
   }
 }
 </script>
