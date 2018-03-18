@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 // Import the modules for vuex
+
 Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
@@ -26,6 +27,20 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    load: function(state,save){
+      state.funds = save.funds;
+      state.stock=[];
+      state.portfolio=[];
+      console.log("state");
+      console.log(state);
+      for(var i=0;i<save.stock.length;i++){
+        state.stock.push(save.stock[i]);
+        console.log("push"+i);
+      }
+      for(var j=0;j<save.portfolio.length;j++){
+        state.portfolio.push(save.portfolio[j]);
+      }
+    },
     dayEnd: function(state){
       // change price for each stock
       var change;
